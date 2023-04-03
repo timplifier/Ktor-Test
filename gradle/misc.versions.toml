@@ -1,0 +1,7 @@
+[versions]
+appProjectPath = ":app"
+dataProjectPath = ":data"
+domainProjectPath = ":domain"
+appNamespace = "com.timplifier.ktortest"
+dataNamespace = "com.timplifier.ktortest.data"
+debugApplicationIdSuffix = ".debug"
