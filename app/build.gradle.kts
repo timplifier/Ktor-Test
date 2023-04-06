@@ -4,12 +4,6 @@ plugins {
 
     // Kotlin
     id(libs.plugins.jetBrains.kotlin.android.get().pluginId)
-
-//    // Kapt
-//    id(libs.plugins.jetBrains.kotlin.kapt.get().pluginId)
-
-    // KSP
-    alias(libs.plugins.agp.ksp)
 }
 
 
@@ -65,15 +59,7 @@ android {
                 kotlin.srcDir("build/generated/ksp/${this@configureEach.name}/kotlin")
             }
         }
-
     }
-//    applicationVariants.configureEach { variant ->
-//        kotlin.sourceSets {
-//            getByName(name) {
-//                kotlin.srcDir("build/generated/ksp/${variant.name}/kotlin")
-//            }
-//        }
-//    }
 }
 
 dependencies {
@@ -93,8 +79,7 @@ dependencies {
     implementation(libs.bundles.navigation)
 
     // Koin
-    implementation(libs.bundles.koin)
-    implementation(libs.koin.annotations)
+    implementation(libs.bundles.koin.android)
     ksp(libs.koin.compiler)
 }
 kotlin {

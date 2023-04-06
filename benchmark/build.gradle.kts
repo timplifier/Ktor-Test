@@ -1,24 +1,26 @@
 plugins {
-    id("com.android.test")
-    id("org.jetbrains.kotlin.android")
+//    id("com.android.test")
+//    id("org.jetbrains.kotlin.android")
+    id(libs.plugins.agp.test.get().pluginId)
+    id(libs.plugins.jetBrains.kotlin.android.get().pluginId)
 }
 
 android {
-    namespace = "com.timplifier.benchmark"
-    compileSdk = 33
+    namespace = misc.versions.benchmarkNamespace.get()
+    compileSdk = config.versions.compileSdk.get().toInt()
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = jvmOptions.versions.kotlinJvmTargetOptions.get()
     }
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 33
+        minSdk = config.versions.minSdk.get().toInt()
+        targetSdk = config.versions.targetSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

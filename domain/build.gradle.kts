@@ -2,7 +2,6 @@ plugins {
     id(libs.plugins.java.library.get().pluginId)
     id(libs.plugins.jetBrains.kotlin.jvm.get().pluginId)
     id(libs.plugins.jetBrains.kotlin.serialization.get().pluginId)
-    alias(libs.plugins.agp.ksp)
 }
 
 java {
@@ -10,15 +9,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 dependencies {
-    implementation(libs.koin.core)
-    implementation(libs.koin.annotations)
+    api(libs.bundles.koin.core)
     ksp(libs.koin.compiler)
     implementation(libs.coroutines.core)
     implementation(libs.paging.common)
     implementation(libs.jetBrains.kotlin.serialization)
 }
-kotlin {
-    sourceSets.main {
-        kotlin.srcDir("build/generated/ksp/main/kotlin")
-    }
-}
+//kotlin {
+//    sourceSets.main {
+//        kotlin.srcDir("build/generated/ksp/main/kotlin")
+//    }
+//}

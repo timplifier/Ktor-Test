@@ -238,7 +238,8 @@ ktor = ["jetBrains-ktor-core", "jetBrains-ktor-logging", "jetBrains-ktor-websock
 hilt = ["hilt-android", "hilt-viewModels"]
 
 #Koin
-koin = ["koin-android", "koin-workManager", "koin-navigation"]
+koin-android = ["koin-android", "koin-workManager", "koin-navigation", "koin-annotations"]
+koin-core = ["koin-core", "koin-annotations"]
 
 #OkHttp
 okHttp = ["okHttp-bom", "okHttp-loggingInterceptor", "okHttp-okHttp"]

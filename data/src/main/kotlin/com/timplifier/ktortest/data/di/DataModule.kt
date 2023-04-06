@@ -16,35 +16,28 @@ import java.util.zip.Deflater
 @ComponentScan("com.timplifier.ktortest.data")
 class DataModule {
 
-}
+    @Single
+    fun createHttpClient() = HttpClient(OkHttp) {
+        install(Logging) {
+            level = LogLevel.ALL
+        }
+        install(WebSockets) {
+            maxFrameSize = Long.MAX_VALUE
+            contentConverter = GsonWebsocketContentConverter()
+            pingInterval = 20_000
+            extensions {
+                install(WebSocketDeflateExtension) {
+                    /**
+                     * Compression level to use for [java.util.zip.Deflater].
+                     */
+                    compressionLevel = Deflater.DEFAULT_COMPRESSION
 
-@Single
-fun createHttpClient() = HttpClient(OkHttp) {
-    install(Logging) {
-        level = LogLevel.ALL
-    }
-    install(WebSockets) {
-        maxFrameSize = Long.MAX_VALUE
-        contentConverter = GsonWebsocketContentConverter()
-        pingInterval = 20_000
-        extensions {
-            install(WebSocketDeflateExtension) {
-                /**
-                 * Compression level to use for [java.util.zip.Deflater].
-                 */
-                compressionLevel = Deflater.DEFAULT_COMPRESSION
-
-                /**
-                 * Prevent compressing small outgoing frames.
-                 */
-                compressIfBiggerThan(bytes = 4 * 1024)
+                    /**
+                     * Prevent compressing small outgoing frames.
+                     */
+                    compressIfBiggerThan(bytes = 4 * 1024)
+                }
             }
         }
     }
 }
-//val dataModule = module {
-//
-//    single { createHttpClient() }
-//
-//    single<MessengerRepository> { MessengerRepositoryImpl(get()) }
-//}

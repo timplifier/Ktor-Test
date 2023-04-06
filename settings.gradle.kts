@@ -29,5 +29,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KtorTest"
 
-include(":app", ":data", ":domain")
-include(":benchmark")
+include(":app", ":data", ":domain", ":benchmark")

@@ -6,9 +6,6 @@ plugins {
 
     // Kotlin
     id(libs.plugins.jetBrains.kotlin.android.get().pluginId)
-
-    // KSP
-    alias(libs.plugins.agp.ksp)
 }
 
 android {
@@ -64,9 +61,7 @@ dependencies {
     // Retrofit
     implementation(libs.bundles.retrofit)
 
-    // Koin Core
-    implementation(libs.koin.core)
-    implementation(libs.koin.annotations)
+    // Koin
     ksp(libs.koin.compiler)
 
     // Coroutines Core
